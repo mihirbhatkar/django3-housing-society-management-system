@@ -26,3 +26,11 @@ class Notice(models.Model):
 
     def __str__(self):
         return self.header_notice
+
+class Complaint(models.Model):
+    contact_name = models.CharField(max_length=100)
+    contact_email = models.EmailField()
+    content = models.TextField()
+    complaint_user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.contact_name)

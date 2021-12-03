@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from main.forms import NewUserForm
+from main.forms import NewUserForm, ComplaintForm
 from main.models import MainPage
 from .models import MainPage, Notice
 from django.contrib.auth.forms import AuthenticationForm
@@ -59,3 +59,15 @@ def login_request(request):
 def noticeboard(request):
     messages.info(request, 'You are viewing the Notice Board!')
     return render(request, "main/noticeboard.html", context={'noticeboard': Notice.objects.all})
+
+
+def complaint(request):
+    if request.method == 'GET':
+        return render(request, "main/complaint.html", context = {'form': ComplaintForm()})
+    else:
+        form = ComplaintForm(request.POST)
+        newcomplaint = form.save(commit=False)
+        newcomplaint.user = request.user
+        newcomplaint.save()
+        messages.info(request, 'Complaint registered successfully!')
+        return redirect('main:homepage')
