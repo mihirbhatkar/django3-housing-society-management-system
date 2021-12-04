@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from main.forms import NewUserForm, ComplaintForm
 from main.models import MainPage
-from .models import MainPage, Notice
+from .models import MainPage, Notice, Staff
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -71,3 +71,7 @@ def complaint(request):
         newcomplaint.save()
         messages.info(request, 'Complaint registered successfully!')
         return redirect('main:homepage')
+
+def staff(request):
+    staff = Staff.objects.all()
+    return render(request, "main/staff.html", context = {'staff': staff})

@@ -1,4 +1,6 @@
 {% extends "main/header.html" %} {% block content %}
+{% load static %}
+<body>
 <div class="row">
   {% for main in mainpage %}
   <div class="col s12 m6 l4">
@@ -14,4 +16,13 @@
   </div>
   {% endfor %}
 </div>
+
+
+</body>
+<style media="screen">
+  .body{
+    background-image: url('houseimage.jpg');
+    background-size: cover;
+  }
+</style>
 {% endblock %}

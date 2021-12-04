@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models.fields import CharField, TextField
+from django.db.models.fields import CharField, TextField, EmailField, IntegerField
 from django.contrib.auth.models import User
 
 class MainPage(models.Model):
@@ -14,7 +14,7 @@ class Profile(models.Model):
     email = models.EmailField()
     age = models.IntegerField(blank=True)
     flat_no = models.CharField(max_length=10)
-    phone_number = models.IntegerField(blank=True)
+    phone_number = models.IntegerField()
 
     def __str__(self):
         return str(self.flat_no)
@@ -34,3 +34,13 @@ class Complaint(models.Model):
     complaint_user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     def __str__(self):
         return str(self.contact_name)
+
+class Staff(models.Model):
+    staff_name = models.CharField(max_length=100)
+    staff_email = models.EmailField()
+    staff_phone = models.IntegerField()
+    designation = models.CharField(max_length=100)
+    about = models.TextField(null=True)
+    image = models.ImageField(upload_to='main/images')
+    def __str__(self):
+        return str(self.designation)
