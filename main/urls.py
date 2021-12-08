@@ -12,6 +12,9 @@ urlpatterns = [
     path('noticeboard', views.noticeboard, name='noticeboard'),
     path('complaint/', views.complaint, name='complaint'),
     path('staff/', views.staff, name='staff'),
+    path('viewbill', views.viewbill, name='viewbill'),
+    path('makenotice', views.makenotice, name='makenotice'),
+    path('service', views.service, name='service'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -7,9 +7,13 @@
             <li><a href="/">Home</a></li>
 
             {% if user.is_authenticated %}
+              {% if user.is_staff %}
+                <li><a href="/makenotice">Make Notice</a></li>
+              {% endif %}
+
               <li><a href="/noticeboard">Notice Board</a></li>
               <li><a href="/service">Services</a></li>
-              <li><a href="/bills">Bills</a></li>
+              <li><a href="/viewbill">Bills</a></li>
               <li><a href="/complaint">Complaint Box</a></li>
               <li><a href="/staff">Society Staff</a></li>
               <li><a href="/logout">Logout</a></li>

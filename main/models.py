@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.fields import CharField, TextField, EmailField, IntegerField
 from django.contrib.auth.models import User
-
+from django.contrib.auth.models import UserManager
 class MainPage(models.Model):
     society_name = CharField(max_length=200)
     society_about = TextField()
@@ -44,3 +44,10 @@ class Staff(models.Model):
     image = models.ImageField(upload_to='main/images')
     def __str__(self):
         return str(self.designation)
+
+class Service(models.Model):
+    service_name = models.CharField(max_length=100)
+    service_email = models.EmailField()
+    service_description = models.CharField(max_length=1000)
+    def __str__(self):
+        return str(self.service_name)
